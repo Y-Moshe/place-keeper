@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place-Keeper</title>
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="onInit()">
+
+  <!-- App Nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="index.html">Home</a>
+        <a class="nav-item nav-link" href="user-prefs.html">User Prefs</a>
+        <a class="nav-item nav-link" href="map.html">Map</a>
+      </div>
+    </div>
+    <!-- Render username -->
+    <span class="nav-username"></span> 
+  </nav>
+
+  <h1 class="text-center text-info m-auto">Welcome to Place-Keeper where you can store places all around the world!!</h1>
+
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="lib/jquery-easing/jquery.easing.min.js"></script>
+  
+  <!-- Services -->
+  <script src="js/services/utils.service.js"></script>
+  <script src="js/services/place.service.js"></script>
+  <script src="js/services/storage.service.js"></script>
+  <script src="js/services/user.service.js"></script>
+
+  <!-- Views -->
+  <script src="js/views/index.view.js"></script>
+</body>
+</html>

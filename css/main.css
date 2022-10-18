@@ -1,0 +1,30 @@
+.cur-pointer {
+  cursor: pointer;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.max-height-500 {
+  max-height: 500px;
+}
+
+.location-btn {
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: red;
+  margin-top: 10px;
+  font-size: 35px;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px -1px;
+  cursor: pointer;
+  transition: .3s;
+}
+.location-btn:focus {
+  outline: none;
+}
+.location-btn:hover {
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.35);
+}
