@@ -7,12 +7,14 @@ var gInputs = [
   {
     label: 'Background Color',
     type: 'color',
-    name: 'bgColor'
+    name: 'bgColor',
+    oninput: 'showPreview(this)'
   },
   {
     label: 'Text Color',
     type: 'color',
-    name: 'txtColor'
+    name: 'txtColor',
+    oninput: 'showPreview(this)'
   },
   {
     label: 'Zoom Factor',
@@ -39,6 +41,12 @@ function setDefaultValues() {
   const prefsObj = getUserPrefs()
   gInputs = gInputs.map(input =>
     ({ ...input, defaultValue: prefsObj[input.name] || '' }))
+}
+
+function showPreview({ name, value }) {
+  console.log(name);
+  if (name === 'bgColor') document.body.style.backgroundColor = value
+  else if (name === 'txtColor') document.body.style.color = value
 }
 
 function onSavePrefs(ev) {
