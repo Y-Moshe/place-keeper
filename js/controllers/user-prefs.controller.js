@@ -30,6 +30,12 @@ var gInputs = [
     list: 'start-location-list'
   }
 ]
+var gStartLocOptions = [
+  'Current location',
+  'First saved location',
+  'Random saved location',
+  'Last selected saved location'
+]
 
 function onInit() {
   loadUserPrefs()

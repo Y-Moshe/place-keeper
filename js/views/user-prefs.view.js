@@ -3,6 +3,7 @@ function onInit() {
   applyUserPrefs()
   setDefaultValues()
   renderInputs()
+  renderDataList()
 }
 
 function renderInputs() {
@@ -29,4 +30,10 @@ function renderInput({ label, type, name, defaultValue, ...restInputProp }) {
       <input type="${type}" id="${name}" class="form-control" name="${name}" ${restProps} />
     </div>
   `
+}
+
+function renderDataList() {
+  const options = gStartLocOptions.map(opt => `<option value="${opt}">`)
+  document.getElementById('start-location-list')
+    .innerHTML = options.join('')
 }
