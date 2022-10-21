@@ -39,16 +39,10 @@ var gStartLocOptions = [
 
 function onInit() {
   loadUserPrefs()
-  applyUserPrefs()
-  renderInputs()
-}
-
-function onInit() {
-  loadUserPrefs()
-  applyUserPrefs()
   setDefaultValues()
   renderInputs()
   renderDataList()
+  applyUserPrefs()
 }
 
 function renderInputs() {
@@ -71,7 +65,7 @@ function renderInput({ label, type, name, defaultValue, ...restInputProp }) {
 
   return `
     <div class="form-group">
-      <label for="${name}">${label}</label>
+      <label class="custom-txt-color" for="${name}">${label}</label>
       <input type="${type}" id="${name}" class="form-control" name="${name}" ${restProps} />
     </div>
   `

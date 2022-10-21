@@ -1,8 +1,8 @@
 function onInit() {
   loadUserPrefs()
-  applyUserPrefs()
   loadLocations()
   renderLocations()
+  applyUserPrefs()
 }
 
 function renderLocations() {
@@ -16,10 +16,10 @@ function renderLocation({ id, name, lat, lng, savedAt }) {
   const date =  new Date(savedAt).toString().split(' ')[4]
 
   return `
-    <li class="list-group-item m-1" onclick="onLocationClick(this, ${lat}, ${lng})">
-      <h4>${name} <span class="close float-right cur-pointer"
+    <li class="list-group-item custom-bg-color m-1 p-1" onclick="onLocationClick(this, ${lat}, ${lng})">
+      <h4 class="custom-txt-color">${name} <span class="close float-right cur-pointer"
         onclick="onRemoveLocation('${id}')">&times;</span></h4>
-      <p class="text-secondary">Saved At: ${date}</p>
+      <p class="text-secondary pb-1">Saved At: ${date}</p>
     </li>
   `
 }

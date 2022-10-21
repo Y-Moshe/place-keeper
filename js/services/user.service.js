@@ -21,8 +21,13 @@ function applyUserPrefs() {
     firstName = ''
   } = gUserPrefs
 
-  document.body.style.backgroundColor = bgColor
-  document.body.style.color = txtColor
+  // Backgound set
+  document.querySelectorAll('.custom-bg-color')
+    .forEach(el => el.style.backgroundColor = bgColor)
+  // Text Color set
+  document.querySelectorAll('.custom-txt-color')
+    .forEach(el => el.style.color = txtColor)
+  // First Name set
   document.querySelectorAll('.first-name')
     .forEach(el => el.innerText = firstName)
 }
