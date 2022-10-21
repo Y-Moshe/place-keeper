@@ -23,6 +23,6 @@ function applyUserPrefs() {
 
   document.body.style.backgroundColor = bgColor
   document.body.style.color = txtColor
-  document.querySelector('.nav-username')
-    .innerText = firstName
+  document.querySelectorAll('.first-name')
+    .forEach(el => el.innerText = firstName)
 }
