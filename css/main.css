@@ -38,3 +38,16 @@ body {
 .user-prefs-inpts {
   background-color: #a4c1c124;
 }
+
+.saved-locations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(141, 202, 255);
+  border-top: 3px solid rgb(92, 179, 255);
+  height: 15%;
+}
+
+.active-location {
+  border-bottom: 3px solid rgb(25, 148, 255) !important;
+}

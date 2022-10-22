@@ -16,7 +16,7 @@
 <body class="custom-bg-color" onload="onInit()">
 
   <!-- App Nav -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
@@ -29,16 +29,20 @@
       </div>
     </div>
     <!-- Render First Name -->
-    <span class="first-name custom-txt-color"></span>
+    <span class="first-name custom-txt-color d-none d-sm-inline"></span>
   </nav>
 
-  <main class="container bg-light my-3">
+  <main class="container bg-light border rounded my-3 p-3 pl-4">
     <div class="row">
       <div class="col-sm-8" id="map" style="height: 500px"></div>
-      <aside class="col-sm-4 max-height-500 overflow-scroll">
-        <h3 class="text-success">Saved Locations</h3>
-        <ul class="locations list-group"></ul>
-      </aside>
+      <div class="col-sm-4 max-height-500 overflow-scroll p-0">
+        <section class="saved-locations">
+          <h5>Saved Locations</h5>
+        </section>
+        <aside class="bg-light">
+          <ul class="locations list-group"></ul>
+        </aside>
+      </div>
     </div>
   </main>
 
