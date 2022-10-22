@@ -35,8 +35,8 @@ function mapReady() {
   const elIcon = document.createElement('i')
   elIcon.classList.add('fa', 'fa-compass')
   locationBtn.append(elIcon)
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationBtn);
-  locationBtn.onclick = onCurrPositionClick
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(locationBtn);
+  locationBtn.addEventListener('click', onCurrentPositionClick)
 
   setMap(map)
   map.addListener('click', onMapClick)
@@ -72,18 +72,13 @@ function onLocationClick(elItem, lat, lng) {
     })
 }
 
-function onCurrPositionClick() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(({ coords }) => {
-      const position = {
-        lat: coords.latitude,
-        lng: coords.longitude
-      }
-
-      centerMap(position.lat, position.lng)
-    }, () => console.log('User block geolocation'))
-  } else {
-    // Browser doesn't support Geolocation
-    console.log('Browser doesn\'t support Geolocation');
-  }
+function onCurrentPositionClick() {
+  getCurrentPosition(({ coords }) => {
+    const position = {
+      lat: coords.latitude,
+      lng: coords.longitude
+    }
+  
+    centerMap(position.lat, position.lng)
+  })
 }

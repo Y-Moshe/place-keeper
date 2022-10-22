@@ -62,6 +62,15 @@ function onMarkerClick(name, marker) {
   })
 }
 
+function getCurrentPosition(cb) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(cb, () => console.log('User block geolocation'))
+  } else {
+    // Browser doesn't support Geolocation
+    console.log('Browser doesn\'t support Geolocation');
+  }
+}
+
 function getPrefStartLocation() {}
 
 function _createMarker(name, lat, lng, marker) {
