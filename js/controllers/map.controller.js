@@ -2,7 +2,6 @@ function onInit() {
   loadUserPrefs()
   loadLocations()
   renderLocations()
-  applyUserPrefs()
 }
 
 function renderLocations() {
@@ -10,13 +9,14 @@ function renderLocations() {
 
   document.querySelector('.locations')
     .innerHTML = elLocations.join('')
+  applyUserPrefs()
 }
 
 function renderLocation({ id, name, lat, lng, savedAt }) {
   const date =  new Date(savedAt).toString().split(' ')[4]
 
   return `
-    <li class="list-group-item custom-bg-color m-1 p-1" onclick="onLocationClick(this, ${lat}, ${lng})">
+    <li class="list-group-item custom-bg-color rounded m-1 p-1 pl-3" onclick="onLocationClick(this, ${lat}, ${lng})">
       <h4 class="custom-txt-color">${name} <span class="close float-right cur-pointer"
         onclick="onRemoveLocation('${id}')">&times;</span></h4>
       <p class="text-secondary pb-1">Saved At: ${date}</p>
@@ -56,6 +56,7 @@ function onRemoveLocation(id) {
   const ans = confirm('are you sure?')
   if (ans) {
     removeMarker(id)
+    saveLocations()
     renderLocations()
   }
 }
@@ -66,8 +67,8 @@ function onLocationClick(elItem, lat, lng) {
   // set active css class
   Array.from(elItem.parentElement?.children)
     .forEach(item => {
-      item.classList.remove('active')
-      if (elItem === item) elItem.classList.add('active')
+      item.classList.remove('active-location')
+      if (elItem === item) elItem.classList.add('active-location')
     })
 }
 

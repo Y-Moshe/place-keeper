@@ -42,7 +42,6 @@ function removeMarker(id) {
   const idx = gMapLocations.findIndex(location => location.id === id)
   if (idx === -1) return
 
-  saveLocations()
   const marker = gMapLocations.splice(idx, 1)[0].marker
   marker.setMap(null)
   return marker
