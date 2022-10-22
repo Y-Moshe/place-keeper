@@ -8,20 +8,24 @@ var gInputs = [
     label: 'Background Color',
     type: 'color',
     name: 'bgColor',
-    oninput: 'showPreview(this)'
+    oninput: 'previewValue(this)',
+    showPreview: true
   },
   {
     label: 'Text Color',
     type: 'color',
     name: 'txtColor',
-    oninput: 'showPreview(this)'
+    oninput: 'previewValue(this)',
+    showPreview: true
   },
   {
-    label: 'Zoom Factor',
+    label: 'Map Zoom Factor',
     type: 'range',
     name: 'zoomFactor',
     min: 1,
-    max: 21
+    max: 21,
+    oninput: 'previewValue(this)',
+    showPreview: true
   },
   {
     label: 'Map Start Location',
@@ -57,16 +61,21 @@ function renderInputs() {
     .innerHTML = inputs.join('')
 }
 
-function renderInput({ label, type, name, defaultValue, ...restInputProp }) {
+function renderInput({ label, type, name, defaultValue, showPreview, ...restInputProp }) {
   let restProps = Object.entries(restInputProp).join(' ')
     .split(' ').map(p => p.replace(',', '=')).join(' '); // if someone sees this, send me a complicated face :P
   
   if (defaultValue.trim()) restProps += ` value="${defaultValue}"`
+  const preview = showPreview ? `<span class="value-preview preview-${name}"></span>:` : ':'
 
   return `
-    <div class="form-group">
-      <label class="custom-txt-color" for="${name}">${label}</label>
-      <input type="${type}" id="${name}" class="form-control" name="${name}" ${restProps} />
+    <div class="form-group row">
+      <div class="col-md-6">
+        <label class="custom-txt-color" for="${name}">${label}${preview}</label>
+      </div>
+      <div class="col-md-6">
+        <input type="${type}" id="${name}" class="form-control" name="${name}" ${restProps} />
+      </div>
     </div>
   `
 }
@@ -83,10 +92,16 @@ function setDefaultValues() {
     ({ ...input, defaultValue: prefsObj[input.name] || '' }))
 }
 
-function showPreview({ name, value }) {
-  console.log(name);
+function previewColors(name, value) {
   if (name === 'bgColor') document.body.style.backgroundColor = value
   else if (name === 'txtColor') document.body.style.color = value
+}
+
+function previewValue({ name, value }) {
+  const elInput = document.querySelector(`.preview-${name}`)
+  if (value.startsWith('#')) previewColors(name, value)
+
+  elInput.innerText = '(' + value.toString() + ')'
 }
 
 function onSavePrefs(ev) {
