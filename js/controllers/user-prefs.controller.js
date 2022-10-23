@@ -1,3 +1,9 @@
+var gStartLocOptions = [
+  START_LOCATIONS.CURRENT,
+  START_LOCATIONS.FIRST_SAVED,
+  START_LOCATIONS.RANDOM_SAVED,
+  START_LOCATIONS.LAST_SELECTED
+]
 var gInputs = [
   {
     label: 'First Name',
@@ -31,14 +37,9 @@ var gInputs = [
     label: 'Map Start Location',
     type: 'text',
     name: 'mapStartLocation',
-    list: 'start-location-list'
+    list: 'start-location-list',
+    pattern: `^(-?\\d{1,90},-?\\d{1,90}|${gStartLocOptions.join('|').replaceAll(' ', '\\s')})$`
   }
-]
-var gStartLocOptions = [
-  START_LOCATIONS.CURRENT,
-  START_LOCATIONS.FIRST_SAVED,
-  START_LOCATIONS.RANDOM_SAVED,
-  START_LOCATIONS.LAST_SELECTED
 ]
 
 function onInit() {
