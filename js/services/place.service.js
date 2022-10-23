@@ -1,6 +1,13 @@
 var gMap
 var gMapLocations = []
 
+const START_LOCATIONS = {
+  CURRENT: 'Current location',
+  FIRST_SAVED: 'First saved location',
+  RANDOM_SAVED: 'Random saved location',
+  LAST_SELECTED: 'Last selected saved location'
+}
+
 function setMap(map) {
   gMap = map
 }
@@ -71,7 +78,47 @@ function getCurrentPosition(cb) {
   }
 }
 
-function getPrefStartLocation() {}
+function getPrefMapStartLocationCoords(location) {
+  let coords = {}
+  switch (location) {
+    case START_LOCATIONS.CURRENT:
+      getCurrentPosition(position => {
+        coords = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      })
+      break;
+    case START_LOCATIONS.FIRST_SAVED:
+      const { lat, lng } = getLocations()[0]
+      coords = { lat, lng }
+      break;
+    case START_LOCATIONS.RANDOM_SAVED:
+      coords = getRandomSavedCoords()
+      break;
+    case START_LOCATIONS.LAST_SELECTED:
+      coords = getLastSelectedCoords()
+      break;
+  
+    default:
+      coords = { lat: 0, lng: 0 }
+      break;
+  }
+
+  return coords
+}
+
+function getRandomSavedCoords() {
+  const locations = getLocations()
+  const idx = getRandomIntInclusive(0, locations.length - 1)
+
+  return { lat, lng } = locations[idx]
+}
+
+function getLastSelectedCoords() {
+  // TO-DO
+  return { lat: 500, lng: 500 }
+}
 
 function _createMarker(name, lat, lng, marker) {
   return {

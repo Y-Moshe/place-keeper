@@ -35,10 +35,10 @@ var gInputs = [
   }
 ]
 var gStartLocOptions = [
-  'Current location',
-  'First saved location',
-  'Random saved location',
-  'Last selected saved location'
+  START_LOCATIONS.CURRENT,
+  START_LOCATIONS.FIRST_SAVED,
+  START_LOCATIONS.RANDOM_SAVED,
+  START_LOCATIONS.LAST_SELECTED
 ]
 
 function onInit() {

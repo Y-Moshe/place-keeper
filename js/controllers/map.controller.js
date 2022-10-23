@@ -25,9 +25,14 @@ function renderLocation({ id, name, lat, lng, savedAt }) {
 }
 
 function mapReady() {
+  loadUserPrefs()
+  loadLocations()
+  const { zoomFactor, mapStartLocation } = getUserPrefs()
+  const { lat, lng } = getPrefMapStartLocationCoords(mapStartLocation)
+
   const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8
+    center: { lat, lng },
+    zoom: +zoomFactor
   })
   // Render Current Button inside google map
   const locationBtn = document.createElement('button')
