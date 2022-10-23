@@ -33,3 +33,17 @@ function updateQueryParam(key, value) {
 function isNumberInString(str) {
   return /\d/.test(str)
 }
+
+function capitlaize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+function convertArrayToCSVContent(arr) {
+  const csvHeader  = Object.keys(arr[0]).join() + '\n'
+  const csvContent = arr.map(item => {
+    const line = Object.values(item).join()
+    return line + '\n'
+  })
+
+  return csvHeader + csvContent.join('')
+}
