@@ -16,7 +16,7 @@ function renderLocation({ id, name, lat, lng, savedAt }) {
   const date =  new Date(savedAt).toString().split(' ')[4]
 
   return `
-    <li class="list-group-item custom-bg-color rounded m-1 p-1 pl-3" onclick="onLocationClick(this, ${lat}, ${lng})">
+    <li class="list-group-item custom-bg-color rounded m-1 p-1 pl-3" onclick="onLocationClick(this, ${lat}, ${lng}, '${id}')">
       <h4 class="custom-txt-color">${name} <span class="close float-right cur-pointer"
         onclick="onRemoveLocation('${id}')">&times;</span></h4>
       <p class="text-secondary pb-1">Saved At: ${date}</p>
@@ -66,8 +66,9 @@ function onRemoveLocation(id) {
   }
 }
 
-function onLocationClick(elItem, lat, lng) {
+function onLocationClick(elItem, lat, lng, locationId) {
   centerMap(lat, lng)
+  saveLastLocationId(locationId)
 
   // set active css class
   Array.from(elItem.parentElement?.children)

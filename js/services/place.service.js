@@ -83,11 +83,12 @@ function getPrefMapStartLocationCoords(location) {
   switch (location) {
     case START_LOCATIONS.CURRENT:
       getCurrentPosition(position => {
-        coords = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
+        centerMap(
+          position.coords.latitude,
+          position.coords.longitude
+        )
       })
+      coords = { lat: 0, lng: 0 }
       break;
     case START_LOCATIONS.FIRST_SAVED:
       const { lat, lng } = getLocations()[0]
@@ -116,8 +117,9 @@ function getRandomSavedCoords() {
 }
 
 function getLastSelectedCoords() {
-  // TO-DO
-  return { lat: 500, lng: 500 }
+  const locationId = getLastLocationId()
+  return { lat, lng } = getLocations()
+    .find(location => location.id === locationId)
 }
 
 function _createMarker(name, lat, lng, marker) {

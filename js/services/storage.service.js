@@ -1,5 +1,6 @@
 const USER_PREFS_STORAGE_KEY = 'userPrefs'
 const LOCATIONS_STORAGE_KEY  = 'locations'
+const LAST_LOCATION_STORAGE_KEY  = 'lastLocation'
 
 function saveUserPrefs(prefs) {
   const json = JSON.stringify(prefs)
@@ -23,4 +24,12 @@ function loadLocations() {
   const json = localStorage.getItem(LOCATIONS_STORAGE_KEY)
   const locations = JSON.parse(json)
   setLocations(locations || [])
+}
+
+function saveLastLocationId(locationId) {
+  localStorage.setItem(LAST_LOCATION_STORAGE_KEY, locationId)
+}
+
+function getLastLocationId() {
+  return localStorage.getItem(LAST_LOCATION_STORAGE_KEY)
 }
