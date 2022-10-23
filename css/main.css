@@ -4,6 +4,14 @@ body {
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
 .cur-pointer {
   cursor: pointer;
 }
@@ -41,13 +49,21 @@ body {
 
 .saved-locations {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgb(141, 202, 255);
   border-top: 3px solid rgb(92, 179, 255);
-  height: 15%;
+  height: 100px;
 }
 
 .active-location {
   border-bottom: 3px solid rgb(25, 148, 255) !important;
+}
+
+.csv-download-link {
+  background-color: rgb(141, 202, 255);
+  color:rgb(25, 148, 255);
+  padding: 15px;
+  display: block;
 }

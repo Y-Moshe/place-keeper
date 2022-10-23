@@ -88,3 +88,20 @@ function onCurrentPositionClick() {
     centerMap(position.lat, position.lng)
   })
 }
+
+function onDownloadCSV(elLink) {
+  const locations = getLocations()
+    .map(({ id, name, lat, lng, savedAt, marker }) => {
+      // exclude "marker" prop and make a pretty content
+      return {
+        'ID': id,
+        'Name': name,
+        'Latitude': lat.toString(),
+        'Longitude': lng.toString(),
+        'Save Date': new Date(savedAt).toLocaleString().replaceAll(',', ' ')
+      }
+    })
+
+  const csvContent = convertArrayToCSVContent(locations)
+  elLink.href = 'data:text/csv;charset=utf-8,' + csvContent
+}
